@@ -24,6 +24,7 @@ public class FlowChart {
 	}
 
 	public void run() throws IOException, FlowChartException {
+		System.out.println("Version: " + this.getClass().getPackage().getImplementationVersion());
 		currentStep = steps.get(0);
 		while (!exit && currentStep != null) {
 			Step nextStep;
