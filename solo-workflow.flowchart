@@ -1,0 +1,55 @@
+MAIN:
+Identify clearly the aim of the development
+Make a list of functionalities in order to get to the aim
+WHILE:
+While the aim is not reached
+RUN FEATURE
+GOTO WHILE
+
+
+
+FEATURE:
+Set or update the value of the different functionalities
+Is something slowing down the project (design error, deploy manual process, etc.)?
+-(y)YES:
+	Add it with the highest priority to the functionality list
+-(n)NO:
+Pick the functionality that (a) has highest value, (b) requires less resources and (c) resolves the most unknowns
+Make a design of the implementation
+Seems the design overly complex? 
+-(y)YES:
+	RUN STEPBACK
+-(n)NO:
+Make test plan
+IMPLEMENT:
+Implement
+-(p)There is a problem:
+	RUN STEPBACK
+	GOTO IMPLEMENT
+-(d)Development is finished:
+	RUN FINISHFEATURE
+	END
+
+
+STEPBACK:
+Is there an aspect of the feature that could be removed, without the feature losing much value, that makes the design simpler?
+-(y)YES:
+	Remove it
+	END
+-(n)NO:
+Is there any change at upper levels: related code, design, related functionalities, project premises, etc.; that makes the problem go away?
+-(y)YES:
+	Work on a global solution
+	END
+-(n)NO:
+Solve by coding
+END
+
+
+
+FINISHFEATURE:
+Mark the implemented functionality as done
+Remove obsolete functionalities
+Remove obsolete done functionalities and remove the code from the codebase
+Update the entity-relationship diagram
+END(Feature is finished)
